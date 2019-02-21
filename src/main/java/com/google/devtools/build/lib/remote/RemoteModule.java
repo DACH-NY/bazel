@@ -143,11 +143,6 @@ public final class RemoteModule extends BlazeModule {
 
     boolean enableRestCache = SimpleBlobStoreFactory.isRestUrlOptions(remoteOptions);
     boolean enableDiskCache = SimpleBlobStoreFactory.isDiskCache(remoteOptions);
-    if (enableRestCache && enableDiskCache) {
-      throw new AbruptExitException(
-          "Cannot enable HTTP-based and local disk cache simultaneously",
-          ExitCode.COMMAND_LINE_ERROR);
-    }
     boolean enableBlobStoreCache = enableRestCache || enableDiskCache;
     boolean enableGrpcCache = GrpcRemoteCache.isRemoteCacheOptions(remoteOptions);
     if (enableBlobStoreCache && !Strings.isNullOrEmpty(remoteOptions.remoteExecutor)) {
