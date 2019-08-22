@@ -587,7 +587,7 @@ public interface CcModuleApi<
             named = true,
             defaultValue = "False"),
         @Param(
-            name = "dynamic_library_path",
+            name = "dynamic_library_symlink_path",
             doc =
                 "Override the default path of the dynamic library link in the solib directory.",
             positional = false,
@@ -596,7 +596,7 @@ public interface CcModuleApi<
             type = String.class,
             defaultValue = "None"),
         @Param(
-            name = "interface_library_path",
+            name = "interface_library_symlink_path",
             doc =
                 "Override the default path of the interface library link in the solib directory.",
             positional = false,
