@@ -374,8 +374,8 @@ public abstract class CcModule
       Object dynamicLibraryObject,
       Object interfaceLibraryObject,
       boolean alwayslink,
-      Object dynamicLibraryPath,
-      Object interfaceLibraryPath,
+      String dynamicLibraryPath,
+      String interfaceLibraryPath,
       Location location,
       Environment environment)
       throws EvalException, InterruptedException {
@@ -394,8 +394,8 @@ public abstract class CcModule
     String extensionErrorMessage = "does not have any of the allowed extensions";
 
     PathFragment dynamicLibraryPathFragment = null;
-    if (dynamicLibraryPath != Runtime.NONE) {
-      dynamicLibraryPathFragment = PathFragment.create(String.class.cast(dynamicLibraryPath));
+    if (dynamicLibraryPath != null && !dynamicLibraryPath.isEmpty()) {
+      dynamicLibraryPathFragment = PathFragment.create(dynamicLibraryPath);
       if (dynamicLibraryPathFragment.isEmpty() || dynamicLibraryPathFragment.isAbsolute() || dynamicLibraryPathFragment.containsUplevelReferences()) {
         throw new EvalException(location, String.format("dynamic_library_symlink_path must be a relative file path. Got '%s'", dynamicLibraryPathFragment.toString()));
       }
@@ -408,8 +408,8 @@ public abstract class CcModule
     }
 
     PathFragment interfaceLibraryPathFragment = null;
-    if (interfaceLibraryPath != Runtime.NONE) {
-      interfaceLibraryPathFragment = PathFragment.create(String.class.cast(interfaceLibraryPath));
+    if (interfaceLibraryPath != null && !interfaceLibraryPath.isEmpty()) {
+      interfaceLibraryPathFragment = PathFragment.create(interfaceLibraryPath);
       if (interfaceLibraryPathFragment.isEmpty() || interfaceLibraryPathFragment.isAbsolute() || interfaceLibraryPathFragment.containsUplevelReferences()) {
         throw new EvalException(location, String.format("interface_library_symlink_path must be a relative file path. Got '%s'", interfaceLibraryPathFragment.toString()));
       }

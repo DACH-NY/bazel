@@ -148,8 +148,8 @@ public class FakeCcModule
       Object dynamicLibrary,
       Object interfaceLibrary,
       boolean alwayslink,
-      Object dynamicLibraryPath,
-      Object interfaceLibraryPath,
+      String dynamicLibraryPath,
+      String interfaceLibraryPath,
       Location location,
       Environment environment) {
     return null;
